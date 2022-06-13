@@ -17,23 +17,23 @@ const asObject = (anecdote) => {
   };
 };
 
-// export const newVote = (id) => {
-//   return {
-//     type: 'VOTE',
-//     payload: { id },
-//   };
-// };
+export const newVote = (id) => {
+  return {
+    type: 'VOTE',
+    payload: { id },
+  };
+};
 
-// export const newAnecdote = (content) => {
-//   return {
-//     type: 'NEW_ANECDOTE',
-//     payload: {
-//       content,
-//       id: getId(),
-//       votes: 0,
-//     },
-//   };
-// };
+export const newAnecdote = (content) => {
+  return {
+    type: 'NEW_ANECDOTE',
+    payload: {
+      content,
+      id: getId(),
+      votes: 0,
+    },
+  };
+};
 
 const initialState = anecdotesAtStart.map(asObject);
 

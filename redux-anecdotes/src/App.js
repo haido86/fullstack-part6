@@ -6,10 +6,10 @@ const App = () => {
   return (
     <div>
       <h2>Anecdotes</h2>
+      <Notification />
       <AnecdoteList />
       <h2>create new</h2>
       <AnecdoteForm />
-      <Notification />
     </div>
   );
 };

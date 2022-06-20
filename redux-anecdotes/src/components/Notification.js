@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
 const Notification = () => {
-  const notifications = useSelector((state) => state.notifications);
-  console.log('notification', notifications);
+  const notification = useSelector((state) => state.notifications);
+  console.log('notification', notification);
 
   const style = {
     border: 'solid',
@@ -11,11 +11,7 @@ const Notification = () => {
   };
   return (
     <div>
-      {notifications.map((notification) => (
-        <div style={style} key={notification.content}>
-          <div>{notification.content}</div>
-        </div>
-      ))}
+      {notification.isShow && <div style={style}>{notification.content}</div>}
     </div>
   );
 };

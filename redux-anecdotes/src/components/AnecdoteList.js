@@ -7,12 +7,13 @@ import {
 
 const AnecdoteList = () => {
   const anecdotes = useSelector((state) => state.anecdotes);
+  const searchTerm = useSelector((state) => state.filter.searchTerm);
 
-  console.log('anecdotes', anecdotes);
+  // console.log('searchTerm', searchTerm);
   const dispatch = useDispatch();
 
   const vote = (id) => {
-    console.log('vote', id);
+    // console.log('vote', id);
     dispatch(addVote(id));
     const voteItem = anecdotes.find((anecdote) => anecdote.id === id);
     dispatch(showNotification({ content: `You voted '${voteItem.content}'` }));
@@ -22,8 +23,11 @@ const AnecdoteList = () => {
   };
 
   const anecdotesForSort = [...anecdotes];
-
-  const orderedByVote = anecdotesForSort.sort(function (a, b) {
+  const filterAnecdotesForSort = anecdotesForSort.filter((n) =>
+    n.content.includes(`${searchTerm}`)
+  );
+  // console.log('filterAnecdotesForSort', filterAnecdotesForSort);
+  const orderedByVote = filterAnecdotesForSort.sort(function (a, b) {
     return b.votes - a.votes;
   });
 

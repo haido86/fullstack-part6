@@ -23,10 +23,11 @@ const AnecdoteList = () => {
   };
 
   const anecdotesForSort = [...anecdotes];
+  console.log('anecdotesForSort', anecdotesForSort);
   const filterAnecdotesForSort = anecdotesForSort.filter((n) =>
     n.content.includes(`${searchTerm}`)
   );
-  // console.log('filterAnecdotesForSort', filterAnecdotesForSort);
+  console.log('filterAnecdotesForSort', filterAnecdotesForSort);
   const orderedByVote = filterAnecdotesForSort.sort(function (a, b) {
     return b.votes - a.votes;
   });

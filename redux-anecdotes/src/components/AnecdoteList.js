@@ -14,21 +14,18 @@ const AnecdoteList = () => {
   const dispatch = useDispatch();
 
   const vote = (id) => {
-    console.log('vote', id);
+    // console.log('vote', id);
     const voteItem = anecdotes.find((anecdote) => anecdote.id === id);
     dispatch(updateByVote(id, voteItem.votes));
     dispatch(setNotification(`You voted '${voteItem.content}'`, 5000));
-    // setTimeout(() => {
-    //   dispatch(clearNotification());
-    // }, 5000);
   };
 
   const anecdotesForSort = [...anecdotes];
-  console.log('anecdotesForSort', anecdotesForSort);
+  // console.log('anecdotesForSort', anecdotesForSort);
   const filterAnecdotesForSort = anecdotesForSort.filter((n) =>
     n.content.toLowerCase().includes(`${searchTerm}`.toLocaleLowerCase())
   );
-  console.log('filterAnecdotesForSort', filterAnecdotesForSort);
+  // console.log('filterAnecdotesForSort', filterAnecdotesForSort);
   const orderedByVote = filterAnecdotesForSort.sort(function (a, b) {
     return b.votes - a.votes;
   });

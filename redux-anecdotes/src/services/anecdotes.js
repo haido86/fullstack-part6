@@ -14,5 +14,14 @@ const createNew = async (content) => {
   return response.data;
 };
 
+const update = async (id, votes) => {
+  console.log('votes', votes);
+  const response = await axios.patch(`${baseUrl}/${id}`, {
+    votes: votes + 1,
+  });
+  console.log('response.data', response.data);
+  return response.data;
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getAll, createNew };
+export default { getAll, createNew, update };

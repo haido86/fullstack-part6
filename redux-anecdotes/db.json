@@ -1,5 +1,5 @@
 {
-  "anecdotes": [
+  "anecdotes":[
     {
       "content": "If it hurts, do it more often",
       "id": "47145",
@@ -29,43 +29,6 @@
       "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
       "id": "98312",
       "votes": 0
-    },
-    {
-      "content": "new anecdote",
-      "id": "QynMwq8"
-    },
-    {
-      "content": "new anecdote",
-      "id": "657jyni"
-    },
-    {
-      "content": "new anecdote",
-      "id": "aELd5ZX"
-    },
-    {
-      "content": "new",
-      "votes": 0,
-      "id": "1JCcpVv"
-    },
-    {
-      "content": "new anecdote",
-      "votes": 0,
-      "id": "mUgd5rp"
-    },
-    {
-      "content": "ut3uoyo45yåp4",
-      "votes": 0,
-      "id": "qhP5ZdT"
-    },
-    {
-      "content": "fsfa",
-      "votes": 0,
-      "id": "5sIy5Qs"
-    },
-    {
-      "content": "I want to run ",
-      "votes": 0,
-      "id": "GF5AH5c"
     }
   ]
 }

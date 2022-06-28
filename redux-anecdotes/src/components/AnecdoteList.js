@@ -1,29 +1,28 @@
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { updateByVote } from '../reducers/anecdoteReducer';
-import {
-  // showNotification,
-  // clearNotification,
-  setNotification,
-} from '../reducers/notificationReducer';
+import { setNotification } from '../reducers/notificationReducer';
 
-const AnecdoteList = () => {
-  const anecdotes = useSelector((state) => state.anecdotes);
-  const searchTerm = useSelector((state) => state.filter.searchTerm);
+const AnecdoteList = (props) => {
+  // const anecdotes = useSelector((state) => state.anecdotes);
+  // const searchTerm = useSelector((state) => state.filter.searchTerm);
 
   // console.log('searchTerm', searchTerm);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const vote = (id) => {
     // console.log('vote', id);
-    const voteItem = anecdotes.find((anecdote) => anecdote.id === id);
-    dispatch(updateByVote(id, voteItem.votes));
-    dispatch(setNotification(`You voted '${voteItem.content}'`, 5000));
+    const voteItem = props.anecdotes.find((anecdote) => anecdote.id === id);
+    // dispatch(updateByVote(id, voteItem.votes));
+    // dispatch(setNotification(`You voted '${voteItem.content}'`, 5000));
+    props.updateByVote(id, voteItem.votes);
+    props.setNotification(`You voted '${voteItem.content}'`, 5000);
   };
 
-  const anecdotesForSort = [...anecdotes];
+  const anecdotesForSort = [...props.anecdotes];
   // console.log('anecdotesForSort', anecdotesForSort);
   const filterAnecdotesForSort = anecdotesForSort.filter((n) =>
-    n.content.toLowerCase().includes(`${searchTerm}`.toLocaleLowerCase())
+    n.content.toLowerCase().includes(`${props.searchTerm}`.toLocaleLowerCase())
   );
   // console.log('filterAnecdotesForSort', filterAnecdotesForSort);
   const orderedByVote = filterAnecdotesForSort.sort(function (a, b) {
@@ -46,4 +45,22 @@ const AnecdoteList = () => {
     </>
   );
 };
-export default AnecdoteList;
+
+const mapStateToProps = (state) => {
+  return {
+    anecdotes: state.anecdotes,
+    searchTerm: state.filter.searchTerm,
+  };
+};
+
+const mapDispatchToProps = {
+  updateByVote,
+  setNotification,
+};
+
+const ConnectedAnecdoteList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnecdoteList);
+
+export default ConnectedAnecdoteList;
